@@ -1,0 +1,12 @@
+{
+  "name": "cafe-map",
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@9.15.1",
+  "scripts": {
+    "get-cafes": "node scripts/get-seoul-cafes.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
