@@ -4,9 +4,24 @@
   "type": "module",
   "packageManager": "pnpm@9.15.1",
   "scripts": {
-    "get-cafes": "node scripts/get-seoul-cafes.js"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "get-cafes": "node scripts/get-seoul-cafes.js",
+    "convert-coords": "node scripts/convert-coordinates.js"
   },
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "@base-ui-components/react": "^1.0.0-alpha.11",
+    "dotenv": "^17.2.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.1",
+    "proj4": "^2.15.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
   }
 }
