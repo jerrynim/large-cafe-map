@@ -18,6 +18,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,6 +39,8 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          VITE_NAVER_MAPS_ID: ${{ secrets.VITE_NAVER_MAPS_ID }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
