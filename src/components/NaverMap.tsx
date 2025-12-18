@@ -16,6 +16,7 @@ function NaverMap({ onDragEnd, onCafeClick, searchTrigger }: NaverMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<naver.maps.Map | null>(null);
   const markersRef = useRef<naver.maps.Marker[]>([]);
+  const userLocationMarkerRef = useRef<naver.maps.Marker | null>(null);
   const [isMapReady, setIsMapReady] = useState(false);
   const [center, setCenter] = useState(DEFAULT_CENTER);
   const initialLoadDoneRef = useRef(false);
@@ -74,6 +75,24 @@ function NaverMap({ onDragEnd, onCafeClick, searchTrigger }: NaverMapProps) {
           };
           setCenter(userCenter);
           map.setCenter(new naver.maps.LatLng(userCenter.lat, userCenter.lng));
+
+          console.log("userCenter", userCenter);
+          // 현재 위치 마커 생성
+          const locationMarker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(userCenter.lat, userCenter.lng),
+            map,
+            icon: {
+              content: `
+                <div class="user-location-marker">
+                  <div class="user-location-dot"></div>
+                  <div class="user-location-pulse"></div>
+                </div>
+              `,
+              anchor: new naver.maps.Point(12, 12),
+            },
+            zIndex: 1000,
+          });
+          userLocationMarkerRef.current = locationMarker;
         },
         () => {
           // 위치 권한 거부 시 기본 위치(서울시청) 사용
@@ -89,7 +108,7 @@ function NaverMap({ onDragEnd, onCafeClick, searchTrigger }: NaverMapProps) {
       const map = mapInstanceRef.current;
       if (!map) return;
 
-      // 기존 마커 제거
+      // 기존 카페 마커 제거 (현재 위치 마커는 유지)
       markersRef.current.forEach((marker) => marker.setMap(null));
       markersRef.current = [];
 
