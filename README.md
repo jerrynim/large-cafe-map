@@ -99,6 +99,9 @@ cafe-map/
 │   ├── App.tsx
 │   ├── main.tsx
 │   └── types.ts
+├── public/
+│   ├── robots.txt             # 검색 엔진 크롤러 설정
+│   └── sitemap.xml            # 사이트맵
 ├── scripts/
 │   ├── convert-coordinates.js # TM → WGS84 좌표 변환
 │   ├── get-seoul-cafes.js     # 서울 데이터 수집
@@ -107,6 +110,13 @@ cafe-map/
 │   └── verify-cafes-naver.js  # 네이버 API 검증
 └── 대형카페_final.json        # 원본 데이터 (TM 좌표)
 ```
+
+## SEO
+
+- **robots.txt**: 모든 검색 엔진 크롤러 허용
+- **sitemap.xml**: 사이트맵 제공
+- **메타 태그**: Open Graph, Twitter Card, 기본 SEO 메타 태그 포함
+- **Canonical URL**: 중복 콘텐츠 방지
 
 ## 라이선스
 

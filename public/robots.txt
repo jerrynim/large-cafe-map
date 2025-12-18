@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jerrynim.github.io/large-cafe-map/sitemap.xml
